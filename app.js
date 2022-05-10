@@ -6,20 +6,19 @@ const data = {
 const getValueOf = (property, cb) => {
     setTimeout(() => {
         if(data.hasOwnProperty(property)) {
-            return cb(null, data[property])
+            cb(null, data[property])
         }else{
-            return cb(new ReferenceError("No such property in DATA!"), null)
+            cb(new ReferenceError("No such property in DATA!"), null)
         }
     }, Math.random() * 3000)
 }
 
 
 getValueOf("first",(err, data)=>{
-    if( typeof data == 'number' ){
-
+    if(err == null ){
         console.log( "Succes! Data: ", data )
-        getValueOf("second",(err, data)=>{
-            if( typeof data == 'number' ){
+        getValueOf("secondd",(err, data)=>{
+            if(err == null ){
                 console.log( "Succes! Data: ", data )
             }else{
                 console.log( "Data NOT available: ", data )
